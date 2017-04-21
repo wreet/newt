@@ -6,7 +6,7 @@
   Accept-Encoding: gzip, deflate, br
 */
 
-var ngen = require("./ngen");
+var ngen = require("../lib/ngen");
 
 ngen.enum(["GET", "POST", "HEAD", "DELETE", "OPTIONS"]);
 ngen.literal(" /");
