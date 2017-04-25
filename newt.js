@@ -17,10 +17,10 @@
   * move crash logging deal to logging class
   * add support for "offset engine" file format builder
   * new fuzz modes:
-		* "ripple" fuzz where we do simple arithmetic 
+		* "ripple" fuzz where we do simple arithmetic
 			* of decreasing amountsaround an impact byte
 		* rotate fuzz where we bitwise rotate a selection of byte(s)
-		* basic arithmetics 
+		* basic arithmetics
 	* add support for fuzzing cli args
   * add support for fuzzing via stdin
 	* that master result obj needs to be consistent, and not fucked sometimes-str-sometimes-obj
@@ -31,7 +31,7 @@
 	* use 'crash hashing' to detect and ignore duplicate crashes
   * eventually all process launchers should be unified, and a common invoke
   	* method etc chosen. really procmon is a fucking mess
-	* autofuzz mode should should switch to exit code + message with next()   
+	* autofuzz mode should should switch to exit code + message with next()
   *****************************************************************************
 */
 
@@ -139,7 +139,7 @@ if (require.main === module) {
 		  console.log("Commands:");
 		  // autofuzz
 		  console.log("  autofuzz    Automatically generate cases and fuzz the subject");
-		  console.log("  |  -i       Required, directory where format seeds can be found");
+		  console.log("  |  -i       Required, directory where file format or ngen seeds can be found");
 		  console.log("  |  -o       Required, output directory for crashes, logs, cases");
 		  console.log("  |  -s       Required, the subject binary to fuzz");
 		  console.log("  |  -k       Sometimes required, kill subject after -k seconds, useful for GUI bins");

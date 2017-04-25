@@ -6,7 +6,7 @@
   Accept-Encoding: gzip, deflate, br
 */
 
-var ngen = require("../lib/ngen");
+//var ngen = require("../lib/ngen"); // include for debug from console
 
 ngen.enum(["GET", "POST", "HEAD", "DELETE", "OPTIONS"]);
 ngen.literal(" /");
@@ -30,4 +30,4 @@ ngen.junk({min_len: 4, max_len: 10});
 ngen.literal(", ");
 ngen.junk({min_len: 4, max_len: 10});
 
-console.log(ngen.buff);
+//console.log(ngen.buff); // include for debug from console
