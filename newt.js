@@ -15,23 +15,21 @@
   * add the "none" monitoring mode
   * eliminate dependence on exploitable module in gdb mode
   * move crash logging deal to logging class
-  * add support for "offset engine" file format builder
   * new fuzz modes:
 		* "ripple" fuzz where we do simple arithmetic
 			* of decreasing amountsaround an impact byte
 		* rotate fuzz where we bitwise rotate a selection of byte(s)
 		* basic arithmetics
+    * chunk spew
 	* add support for fuzzing cli args
   * add support for fuzzing via stdin
 	* that master result obj needs to be consistent, and not fucked sometimes-str-sometimes-obj
-  * clean up the fuzz_director.js file
 	* look into deterministic fuzzing as suggested in lcamtuf's post
   * decentralize as much functionality as possible through hooks
 	* port newt to windows including windbg monitor mode
 	* use 'crash hashing' to detect and ignore duplicate crashes
-  * eventually all process launchers should be unified, and a common invoke
-  	* method etc chosen. really procmon is a fucking mess
 	* autofuzz mode should should switch to exit code + message with next()
+  * cache ngen files in memory to reduce tight file reads
   *****************************************************************************
 */
 
@@ -134,7 +132,7 @@ if (require.main === module) {
 
     default:
 		  // help case
-		  console.log("[~] newt.js - a simple node-powered fuzzer");
+		  console.log("[~] newt.js " + require('./package.json').version + " - a simple node-powered fuzzer");
 		  console.log("Usage: newt command [opts]\n");
 		  console.log("Commands:");
 		  // autofuzz
