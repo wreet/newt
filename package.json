@@ -1,7 +1,7 @@
 {
   "name": "newt",
   "version": "0.5.0",
-  "description": "a simple, extensible file format fuzzer written with nodejs",
+  "description": "a simple, extensible fuzzer written with nodejs",
   "dependencies": {
     "child-process": "^1.0.2",
     "gdb.js": "^0.1.5",
