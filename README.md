@@ -1,6 +1,6 @@
 # newt.js
 
-An easy to use, full-featured mutation fuzzer for files designed for extensibility 
+An easy to use, full-featured fuzzer designed for extensibility
 
 ## usage
 ```
@@ -8,7 +8,7 @@ newt command [opts]
 
 Commands:
   autofuzz    Automatically generate cases and fuzz the subject
-  |  -i       Required, directory where format seeds can be found
+  |  -i       Required, directory where format or ngen seeds can be found
   |  -o       Required, output directory for crashes, logs, cases
   |  -s       Required, the subject binary to fuzz
   |  -k       Sometimes required, kill subject after -k seconds, useful for GUI bins
@@ -23,7 +23,7 @@ Commands:
 ```
 
 ## features
-newt.js does quite a lot - it can start and run through test cases completely unattended with two built-in monitoring modes: gdb or asan. It has several built-in mutators, all of which can accept an options array for tweaking. It's designed with extensibility in mind - you can easily hang whatever function you want on almost any method utilized by the fuzzer, allowing it to adapt to new monitoring modes or mutators with minimal hassle. 
+newt.js does quite a lot - it can start and run through test cases completely unattended with two built-in monitoring modes: gdb or asan. It has several built-in mutators, all of which can accept an options array for tweaking. It's designed with extensibility in mind - you can easily hang whatever function you want on almost any method utilized by the fuzzer, allowing it to adapt to new monitoring modes or mutators with minimal hassle.
 
 ## examples
-add some 
+add some
