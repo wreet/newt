@@ -11,7 +11,7 @@
   *****************************************************************************
   * BUGS/TODO:
 	* the new standalone procmon reveals how tangled a mess things are, needs to be fixed fast <---||||f
-	* unite arg parsers, what kind of shit is that?
+	* unite arg parsers. like for fuck's sake what is this shit??
   * add the "none" monitoring mode
   * eliminate dependence on exploitable module in gdb mode
   * move crash logging deal to logging class
@@ -88,9 +88,34 @@ if (require.main === module) {
 			newt.fuzzer.autoFuzz(opts);
 			break;
 
+    case "netfuzz": // much like autofuzz, but assuming the local instance unable to procmon
+      /*
+        * for now, we will just use sockets I guess, and assume that the ngen file
+        * has taken care of the hard work of describing the correct protocol
+      */
+      var args = process.argv.slice(3);
+      for (var i = 0; i < args.length; i++) {
+        var arg = args[i];
+				switch (arg) {
+          case "-h":
+            // set the host
+            args.host = args[++i];
+            break;
+
+          case "-p":
+            // set the port
+            args.port = args[++i];
+        }
+      } // end options iteration
+      newt.fuzzer.netFuzz(args);
+      process.exit();
+
+
+      break; // end netfuzz
+
 		case "procmon": // simply spawn a proc to mon, fuzzing will happen elsewhere
 			// parse args from stdin
-		  	var args = process.argv.slice(3);
+		  var args = process.argv.slice(3);
 			for (var i = 0; i < args.length; i++) {
 				var arg = args[i];
 				switch (arg) {
