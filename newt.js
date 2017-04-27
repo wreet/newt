@@ -105,6 +105,10 @@ if (require.main === module) {
           case "-p":
             // set the port
             args.port = args[++i];
+
+          case "-o":
+            // out dir
+            args.out_dir = args[++i];
         }
       } // end options iteration
       newt.fuzzer.netFuzz(args);
