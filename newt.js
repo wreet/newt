@@ -105,6 +105,12 @@ if (require.main === module) {
           case "-o":
             // out dir
             args.out_dir = args[++i];
+            break;
+
+          case "-i":
+            // seeds dir
+            args.seeds_dir = args[++i];
+            break;
         }
       } // end options iteration
       newt.fuzzer.netFuzz(args);
