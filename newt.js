@@ -98,13 +98,9 @@ if (require.main === module) {
         var arg = args[i];
 				switch (arg) {
           case "-h":
-            // set the host
+            // set the host:port
             args.host = args[++i];
             break;
-
-          case "-p":
-            // set the port
-            args.port = args[++i];
 
           case "-o":
             // out dir
@@ -179,6 +175,11 @@ if (require.main === module) {
 		  console.log("  |  -m       Required, monitor mode [asan|gdb]");
 		  console.log("  |  -r       Optional, respawn process on exit");
 		  console.log("  |  -o       Optional, output dir. Results printed to console if none specified");
+      console.log();
+      // netfuzz
+      console.log("  netfuzz     Launch and monitor a process");
+		  console.log("  |  -o       Required, output directory for crashes, logs, cases");
+      console.log("  |  -h       Required, the host to send the fuzz case as host:port");
 
       // randbuff
 
