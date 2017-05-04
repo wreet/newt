@@ -1,6 +1,6 @@
 {
   "name": "newt",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "a simple, extensible fuzzer written with nodejs",
   "dependencies": {
     "child-process": "^1.0.2",
