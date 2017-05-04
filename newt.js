@@ -114,9 +114,6 @@ if (require.main === module) {
         }
       } // end options iteration
       newt.fuzzer.netFuzz(args);
-      process.exit();
-
-
       break; // end netfuzz
 
 		case "procmon": // simply spawn a proc to mon, fuzzing will happen elsewhere
