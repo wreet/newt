@@ -180,7 +180,7 @@ if (require.main === module) {
 		  console.log("  |  -o       Optional, output dir. Results printed to console if none specified");
       console.log();
       // netfuzz
-      console.log("  netfuzz     Launch and monitor a process");
+      console.log("  netfuzz     Fuzz a remote network service");
 		  console.log("  |  -o       Required, output directory for crashes, logs, cases");
       console.log("  |  -h       Required, the host to send the fuzz case as host:port");
 
