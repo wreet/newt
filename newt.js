@@ -27,7 +27,6 @@
 	* look into deterministic fuzzing as suggested in lcamtuf's post
   * decentralize as much functionality as possible through hooks
 	* port newt to windows including windbg monitor mode
-	* use 'crash hashing' to detect and ignore duplicate crashes
 	* autofuzz mode should should switch to exit code + message with next()
   * cache ngen files in memory to reduce tight file reads
   *****************************************************************************
