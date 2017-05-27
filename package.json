@@ -4,7 +4,6 @@
   "description": "a simple, extensible fuzzer written with nodejs",
   "dependencies": {
     "child-process": "^1.0.2",
-    "gdb.js": "^0.1.5",
-    "sleep": "^4.0.0"
+    "gdb.js": "^0.1.5"
   }
 }
