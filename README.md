@@ -4,11 +4,11 @@ An easy to use, full-featured fuzzer designed for extensibility
 
 ## usage
 ```
-newt command [opts]
+Usage: newt command [opts]
 
 Commands:
   autofuzz    Automatically generate cases and fuzz the subject
-  |  -i       Required, directory where format or ngen seeds can be found
+  |  -i       Required, directory where file format or ngen seeds can be found
   |  -o       Required, output directory for crashes, logs, cases
   |  -s       Required, the subject binary to fuzz
   |  -k       Sometimes required, kill subject after -k seconds, useful for GUI bins
@@ -20,6 +20,11 @@ Commands:
   |  -m       Required, monitor mode [asan|gdb]
   |  -r       Optional, respawn process on exit
   |  -o       Optional, output dir. Results printed to console if none specified
+
+  netfuzz     Fuzz a remote network service
+  |  -o       Required, output directory for crashes, logs, cases
+  |  -h       Required, the host to send the fuzz case as host:port
+
 ```
 
 ## features
