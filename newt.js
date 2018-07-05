@@ -180,9 +180,9 @@ if (require.main === module) {
       console.log();
       // netfuzz
       console.log("  netfuzz     Fuzz a remote network service");
-		  console.log("  |  -o       Required, output directory for crashes, logs, cases");
+		  console.log("  |  -i       Required, directory where ngen seeds can be found");
+			console.log("  |  -o       Required, output directory for crashes, logs, cases");
       console.log("  |  -h       Required, the host to send the fuzz case as host:port");
-
       // randbuff
 
       // mutate
