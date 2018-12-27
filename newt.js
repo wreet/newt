@@ -38,7 +38,6 @@ newt.opts = {
   debug: 1
 };
 
-
 // cli interpretron time
 if (require.main === module) {
   // we will keep cli stuff real simple, check first arg, exec accordingly
@@ -106,18 +105,18 @@ if (require.main === module) {
       for (var i = 0; i < args.length; i++) {
         var arg = args[i];
         switch (arg) {
-            case "-h":
-              // set the host:port
-              args.host = args[++i];
-              break;
-            case "-o":
-              // out dir
-              args.out_dir = args[++i];
-              break;
-            case "-i":
-              // seeds dir
-              args.seeds_dir = args[++i];
-              break;
+          case "-h":
+            // set the host:port
+            args.host = args[++i];
+            break;
+          case "-o":
+            // out dir
+            args.out_dir = args[++i];
+            break;
+          case "-i":
+            // seeds dir
+            args.seeds_dir = args[++i];
+            break;
         }
       } // end options iteration
       newt.fuzzer.netFuzz(args);
