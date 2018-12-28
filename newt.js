@@ -69,22 +69,21 @@ if (require.main === module) {
       if (process.argv.length < 5) {
         console.log("Take buffer from stdin, mangle every fuzz factor bytes and print to stdout:");
         console.log("\tuse: newt.js mutate -f <fuzz factor>");
-        console.log("\tex: cat seed.jpg | ./newt.js mutate -f 32 > case.jpg");
+        console.log("\tex: cat seed.jpg | ./newt.js mutate -f 32 -x ripple > case.jpg");
+        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, ripple")
+        process.exit();
       }
-      var args = process.argv.slice(3);
-      for (var i = 0; i < args.length; i++) {
-        var arg = args[i];
-        switch (arg) {
-          case "-f": // fuzz factor
-            args.fuzz_factor = args[++i];
-            break;
-        }
-      }
+      var args = newt.fuzzer.utils.parseArgs(process.argv.slice(3));
       // take a stdinput, mangle it to stdout
+      if (!args.mutators) {
+        console.log("[!] mutatation mode requires you to set a mutator with flag -x (e.g. -x ripple");
+        console.log("[i] try \"newt.js mutate\" for more information");
+        process.exit();
+      }
       process.stdin.resume();
       process.stdin.setEncoding('utf8');
       process.stdin.on('data', function (buff) {
-        var b = newt.fuzzing.buffMangler(buff, {
+        var b = newt.fuzzing[args.mutators[0].name](buff, {
           fuzz_factor: args.fuzz_factor
         });
         process.stdout.write(b);
@@ -178,7 +177,7 @@ if (require.main === module) {
       console.log("  |  -k       Sometimes required, kill subject after -k seconds, useful for GUI bins");
       console.log("  |  -f       Optional, int value that translates to fuzzing 1/-f byte in most mutators");
       console.log("  |  -m       Optional, monitor mode. Default is gdb, asan instrumented bins also supported");
-      console.log("  |  -x       Optional, comma-separated list of mutators(e.g. ripple,chunkspew, default is all");
+      console.log("  |  -x       Optional, comma-separated list of mutators(e.g. ripple,chunkspew) default is all");
       console.log(); // newline
       // procmon
       console.log("  procmon     Launch and monitor a process");
@@ -200,6 +199,6 @@ if (require.main === module) {
       // mutate
       console.log("  mutate      Mutate an input buffer from stdin, write it to stdout");
       console.log("  |  -f       Required, fuzz factor for the input buffer");
-      console.log("  |  -m       Optional, mutator to use, defaults to buffmangler");
+      console.log("  |  -x       Required, the mutator to use(e.g. ripple)");
   } // end comm switch
 } // end arg handling
