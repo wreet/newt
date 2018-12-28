@@ -174,7 +174,7 @@ if (require.main === module) {
       console.log("  |  -i       Required, directory where file format or ngen seeds can be found");
       console.log("  |  -o       Required, output directory for crashes, logs, cases");
       console.log("  |  -s       Required, the subject binary to fuzz");
-      console.log("  |  -k       Sometimes required, kill subject after -k seconds, useful for GUI bins");
+      console.log("  |  -k       Optional, kill subject after -k seconds, useful for GUI bins");
       console.log("  |  -f       Optional, int value that translates to fuzzing 1/-f byte in most mutators");
       console.log("  |  -m       Optional, monitor mode. Default is gdb, asan instrumented bins also supported");
       console.log("  |  -x       Optional, comma-separated list of mutators(e.g. ripple,chunkspew) default is all");
