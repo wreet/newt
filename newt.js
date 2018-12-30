@@ -123,6 +123,13 @@ if (require.main === module) {
 
     case "procmon": // simply spawn a proc to mon, fuzzing will happen elsewhere
       // parse args from stdin
+      if (process.argv.length < 7) {
+        console.log("Spawn a process with arguments and monitor for crashes");
+        console.log("\tuse: ./newt.js -s <subject bin + args> -m <monitor mode>");
+        console.log("\tex: ./newt.js -s firefox case.html -m asan");
+        console.log("\tavailable monitoring modes are gdb, asan, none");
+        process.exit();
+      }
       var args = process.argv.slice(3);
       for (var i = 0; i < args.length; i++) {
         var arg = args[i];
@@ -183,7 +190,7 @@ if (require.main === module) {
       console.log("  procmon     Launch and monitor a process");
       console.log("  |  -s       Required, the subject binary [with args]");
       console.log("  |  -m       Required, monitor mode [asan|gdb]");
-      console.log("  |  -r       Optional, respawn process on exit");
+      console.log("  |  -r       Optional, respawn process on exit(flag takes no args)");
       console.log("  |  -o       Optional, output dir. Results printed to console if none specified");
       console.log();
       // netfuzz
