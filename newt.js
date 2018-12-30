@@ -125,8 +125,8 @@ if (require.main === module) {
       // parse args from stdin
       if (process.argv.length < 7) {
         console.log("Spawn a process with arguments and monitor for crashes");
-        console.log("\tuse: ./newt.js -s <subject bin + args> -m <monitor mode>");
-        console.log("\tex: ./newt.js -s firefox case.html -m asan");
+        console.log("\tuse: ./newt.js procmon -s <subject bin + args> -m <monitor mode>");
+        console.log("\tex: ./newt.js procmon -s firefox case.html -m asan");
         console.log("\tavailable monitoring modes are gdb, asan, none");
         process.exit();
       }
