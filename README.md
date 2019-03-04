@@ -32,3 +32,5 @@ newt.js does quite a lot - it can start and run through test cases completely un
 
 ## examples
 add some
+
+A quick tutorial on usage can be found [on my blog](http://wreet.xyz/2018/03/04/simple-fuzzing-with-newt/).
