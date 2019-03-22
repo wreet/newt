@@ -10,17 +10,19 @@
   *****************************************************************************                                                                                                  
   * BUGS/TODO:                                                                                                                                                                   
     * the new standalone procmon reveals how tangled a mess things are, needs to be fixed fast <---||||f                                                                     
-    * unite arg parsers. like for fuck's sake what is this shit??                                                                                                            
+    * unite arg parsers                                                                                                        
     * eliminate dependence on exploitable module in gdb mode (or coopt gdb.js into this codebase)                                                                                  
     * move crash logging deal to logging class                                                                                                                                     
     * new fuzz modes:                                                                                                                                                              
-    * rotate fuzz where we bitwise rotate a selection of byte(s)                                                                                                     
+    *   rotate fuzz where we bitwise rotate a selection of byte(s)                                                                                                     
     * add support for fuzzing cli args                                                                                                                                       
     * add support for fuzzing via stdin                                                                                                                                            
-    * that master result obj needs to be consistent, and not fucked sometimes-str-sometimes-obj                                                                              
+    * that master result obj needs to be consistent                                                                           
     * port newt to windows including windbg monitor mode                                                                                                                     
     * autofuzz mode should should switch to exit code + message with next()                                                                                                  
-    * cache ngen files in memory to reduce tight file reads                                                                                                                        
+    * cache ngen files in memory to reduce tight file reads     
+    * netfuzzing mode is not complete
+    * add crash minimizer                                                                                                                   
     * some tests would be nice yeah?                                                                                                                                               
   *****************************************************************************                                                                                                  
  */
