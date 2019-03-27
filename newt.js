@@ -72,7 +72,7 @@ if (require.main === module) {
         console.log("Take buffer from stdin, mangle every fuzz factor bytes and print to stdout:");
         console.log("\tuse: newt.js mutate -f <fuzz factor>");
         console.log("\tex: cat seed.jpg | ./newt.js mutate -f 32 -x ripple > case.jpg");
-        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, ripple")
+        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, ripple");
         process.exit();
       }
       var args = newt.fuzzer.utils.parseArgs(process.argv.slice(3));
@@ -93,6 +93,15 @@ if (require.main === module) {
       break;
 
     case "autofuzz": // go through and fuzz a subject automagically
+      if (process.argv.length < 9) {
+        console.log("Perform an unattended fuzz run on a subject binary");
+        console.log("\tuse: newt.js autofuzz -s <subject> -i <seeds_sir> -o <output_dir> [-k <kill_time> -m <monitor_mode> -f <fuzz_factor> -x <mutators>]");
+        console.log("\tex: newt.js autofuzz -f 32 -s okular -m gdb -i seeds -o out -k 2");
+        console.log("\tavailable monitoring modes are: gdb, asan");
+        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, ripple");
+        console.log("\tfuzz factor roughly translates to fuzzing 1/-f bytes");
+        process.exit();
+      }
       var opts = newt.fuzzer.utils.parseArgs(process.argv.slice(3));
       newt.fuzzer.autoFuzz(opts);
       break;
@@ -101,7 +110,14 @@ if (require.main === module) {
       /*
         * for now, we will just use sockets I guess, and assume that the ngen file
         * has taken care of the hard work of describing the correct protocol
-        */
+        */      
+      if (process.argv.length < 9) {
+        console.log("Fuzz a remote network service");
+        console.log("\tuse newt.js netfuzz -i <ngen_seeds_dir> -o <logging_dir> -h <host:port>");
+        console.log("\tex: newt.js netfuzz -i ngen_seeds -o out -h localhost:1337");
+        console.log("\tnote: ngen seed exmaples come with newt, will be further documented in the future");
+        process.exit();
+      }
       var args = process.argv.slice(3);
       for (var i = 0; i < args.length; i++) {
         var arg = args[i];
