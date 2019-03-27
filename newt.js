@@ -23,7 +23,8 @@
     * cache ngen files in memory to reduce tight file reads     
     * netfuzzing mode is not complete
     * add crash minimizer                                                                                                                   
-    * some tests would be nice yeah?                                                                                                                                               
+    * some tests would be nice yeah?      
+    * add ability to use multiple mutators on each file                                                                                                                                         
   *****************************************************************************                                                                                                  
  */
 
@@ -72,7 +73,7 @@ if (require.main === module) {
         console.log("Take buffer from stdin, mangle every fuzz factor bytes and print to stdout:");
         console.log("\tuse: newt.js mutate -f <fuzz factor>");
         console.log("\tex: cat seed.jpg | ./newt.js mutate -f 32 -x ripple > case.jpg");
-        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, ripple");
+        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, bitrotate, ripple");
         process.exit();
       }
       var args = newt.fuzzer.utils.parseArgs(process.argv.slice(3));
@@ -83,7 +84,8 @@ if (require.main === module) {
         process.exit();
       }
       process.stdin.resume();
-      process.stdin.setEncoding('utf8');
+      process.stdin.setEncoding('binary');
+      process.stdout.setDefaultEncoding('binary');
       process.stdin.on('data', function (buff) {
         var b = newt.fuzzing[args.mutators[0].name](buff, {
           fuzz_factor: args.fuzz_factor
@@ -98,7 +100,7 @@ if (require.main === module) {
         console.log("\tuse: newt.js autofuzz -s <subject> -i <seeds_sir> -o <output_dir> [-k <kill_time> -m <monitor_mode> -f <fuzz_factor> -x <mutators>]");
         console.log("\tex: newt.js autofuzz -f 32 -s okular -m gdb -i seeds -o out -k 2");
         console.log("\tavailable monitoring modes are: gdb, asan");
-        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, ripple");
+        console.log("\tavailable mutators are: buffmangler, bitflip, byteflip, bytearith, chunkspew, bitrotate, ripple");
         console.log("\tfuzz factor roughly translates to fuzzing 1/-f bytes");
         process.exit();
       }
@@ -203,6 +205,7 @@ if (require.main === module) {
       console.log("  |  -f       Optional, int value that translates to fuzzing 1/-f byte in most mutators");
       console.log("  |  -m       Optional, monitor mode. Default is gdb, asan instrumented bins also supported");
       console.log("  |  -x       Optional, comma-separated list of mutators(e.g. ripple,chunkspew) default is all");
+      console.log("  |  -p       Optional, preserve non-crashing cases so they can be examined or used elsewhere")
       console.log(); // newline
       // procmon
       console.log("  procmon     Launch and monitor a process");

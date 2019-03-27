@@ -3,6 +3,7 @@
   "version": "0.6.0",
   "description": "a simple, extensible fuzzer written with nodejs",
   "dependencies": {
+    "bitwise-rotation": "^1.0.1",
     "child-process": "^1.0.2",
     "gdb.js": "^0.1.5"
   }
