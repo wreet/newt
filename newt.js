@@ -12,9 +12,7 @@
     * the new standalone procmon reveals how tangled a mess things are, needs to be fixed fast <---||||f                                                                     
     * unite arg parsers                                                                                                        
     * eliminate dependence on exploitable module in gdb mode (or coopt gdb.js into this codebase)                                                                                  
-    * move crash logging deal to logging class                                                                                                                                     
-    * new fuzz modes:                                                                                                                                                              
-    *   rotate fuzz where we bitwise rotate a selection of byte(s)                                                                                                     
+    * move crash logging deal to logging class                                                                                                                                                                                                                                       
     * add support for fuzzing cli args                                                                                                                                       
     * add support for fuzzing via stdin                                                                                                                                            
     * that master result obj needs to be consistent                                                                           
