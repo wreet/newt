@@ -17,6 +17,7 @@ Commands:
   |  -f       Optional, int value that translates to fuzzing 1/-f byte in most mutators
   |  -m       Optional, monitor mode. Default is gdb, asan instrumented bins also supported
   |  -x       Optional, comma-separated list of mutators(e.g. ripple,chunkspew) default is all
+  |  -p       Optional, preserve non-crashing cases so they can be examined or used elsewhere
 
   procmon     Launch and monitor a process
   |  -s       Required, the subject binary [with args]
