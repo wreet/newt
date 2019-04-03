@@ -76,3 +76,5 @@ Run a case binary against objdump, log the results to stdout and use the ASAN mo
 Generate fuzzed requests using ngen templates to the service on port 1337 at localhost. For best results, monitor the server process on the other end using newt's procmon mode. 
 
 A quick tutorial on fuzzing PDF files with newt can be found [here](https://wreet.xyz/2019/03/04/simple-fuzzing-with-newt/).
+
+For support or questions, visit [https://t.me/newtfuzzer](https://t.me/newtfuzzer)
